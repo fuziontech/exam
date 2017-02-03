@@ -16,7 +16,7 @@ class fixture(object):
 
     def __get__(self, testcase, type=None):
         if not testcase:
-            # Test case fixture was accesse as a class property, so just return
+            # Test case fixture was accessed as a class property, so just return
             # this fixture itself.
             return self
         elif self not in testcase.__dict__:
@@ -31,7 +31,7 @@ class fixture(object):
     def __apply(self, testcase):
         # If self.thing is a method type, it means that the function is already
         # bound to a class and therefore we should treat it just like a normal
-        # functuion and return it.
+        # function and return it.
         if type(self.thing) in (type, types.MethodType):
             return self.thing
         # If not, it means that's it's a vanilla function,
@@ -61,7 +61,7 @@ class before(base):
         # simply call that callable with the instance.
         if isinstance(thing, exam.cases.Exam):
             return self.init_callables[0](thing)
-        # If ``thing is not an instance of the test case, it means thi before
+        # If ``thing is not an instance of the test case, it means this before
         # hook was constructed with a callable that we need to run before
         # actually running the decorated function.
         # It also means that ``thing`` is the function we're
